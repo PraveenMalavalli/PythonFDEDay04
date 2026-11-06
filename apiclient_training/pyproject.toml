@@ -1,0 +1,31 @@
+[project]
+name = "apiclient-training"
+version = "0.1.0"
+description = "Training API client with httpx, Pydantic, retry handling and offline tests"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28,<0.29",
+    "pydantic>=2.10,<3",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1", "pyright>=1.1,<2"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 99
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pyright]
+include = ["app", "tests", "tools"]
+pythonVersion = "3.11"
+typeCheckingMode = "basic"

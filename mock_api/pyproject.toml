@@ -1,0 +1,22 @@
+# The Mock API needs only a web framework and a server. No versions are written here:
+# `uv sync` picks the newest working ones and records them in uv.lock (commit that file).
+[project]
+name = "training-mock-api"
+version = "0.1.0"
+description = "Deliberately imperfect API for training: failures, limits, duplicates, odd formats."
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+]
+
+[dependency-groups]
+dev = ["pytest", "httpx", "ruff"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["."]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+line-length = 99
